@@ -12,7 +12,7 @@ from telegram.ext import Application, MessageHandler, CommandHandler, filters, C
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-TELEGRAM_TOKEN = os.environ.get('TELEGRAM_TOKEN')h
+TELEGRAM_TOKEN = os.environ.get('TELEGRAM_TOKEN')
 ANTHROPIC_API_KEY = os.environ.get('ANTHROPIC_API_KEY')
 
 flask_app = Flask(__name__)
