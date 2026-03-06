@@ -12,7 +12,7 @@ from telegram.ext import Application, MessageHandler, CommandHandler, filters, C
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-TELEGRAM_TOKEN = os.environ.get('TELEGRAM_TOKEN')
+TELEGRAM_TOKEN = os.environ.get('TELEGRAM_TOKEN')h
 ANTHROPIC_API_KEY = os.environ.get('ANTHROPIC_API_KEY')
 
 flask_app = Flask(__name__)
@@ -140,7 +140,7 @@ def run_bot():
         app = Application.builder().token(TELEGRAM_TOKEN).build()
         app.add_handler(CommandHandler("start", cmd_start))
         app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_message))
-        await app.run_polling(drop_pending_updates=True)
+        await app.run_polling(drop_pending_updates=True, stop_signals=None)
     
     asyncio.run(async_main())
 
