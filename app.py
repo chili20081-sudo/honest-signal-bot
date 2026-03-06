@@ -136,13 +136,10 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
             await update.message.reply_text(f"❌ Ошибка: {str(e)}")
 
 def run_bot():
-    async def async_main():
-        app = Application.builder().token(TELEGRAM_TOKEN).build()
-        app.add_handler(CommandHandler("start", cmd_start))
-        app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_message))
-        await app.run_polling(drop_pending_updates=True, stop_signals=None)
-    
-    asyncio.run(async_main())
+        application = Application.builder().token(TELEGRAM_TOKEN).build()
+        application.add_handler(CommandHandler("start", cmd_start))
+        application.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_message))
+        application.run_polling(drop_pending_updates=True, stop_signals=())
 
 def main():
     bot_thread = threading.Thread(target=run_bot, daemon=True)
