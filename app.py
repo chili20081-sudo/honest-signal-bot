@@ -136,6 +136,7 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
             await update.message.reply_text(f"❌ Ошибка: {str(e)}")
 
 def run_bot():
+        asyncio.set_event_loop(asyncio.new_event_loop())
         application = Application.builder().token(TELEGRAM_TOKEN).build()
         application.add_handler(CommandHandler("start", cmd_start))
         application.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_message))
